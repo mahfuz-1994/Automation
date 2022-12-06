@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title> Department Insert </title>
+
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script>
+
+
+function DepartmentInsert(obj)
+	{  	
+	
+	var _department = document.getElementById("txtDepartment").value;
+	
+	if(_department == "")
+		{
+			alert("Department Cannot be left blank");
+			document.getElementById("txtDepartment").focus();
+			return false;
+		}
+	
+	var postData= {    
+  			"Department" : _department
+  			}
+	
+	
+
+	
+     $.ajax({
+    	url: "http://localhost:9082/DepartmentController1/PostInsertDepartmentData",
+ 		type: "POST",
+ 		contentType : 'application/json; charset=utf-8',
+    	dataType : 'json',
+ 		data: JSON.stringify(postData),
+        success: function(resultB) {        	
+			alert("Department Inserted Sucessfully");
+			return false;
+        	
+        },
+        error: function(jqXHR, textStatus, errorThrown){
+        	alert(errorThrown);
+            alert(jqXHR.status + ' ' + jqXHR.responseText);
+        }
+   });
+
+}
+</script>
+<style>
+.container {
+  height: 200px;
+  position: relative;
+  border: 3px solid green;
+}
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+</style>
+
+</head>
+<body onload="loadDropDown(this)">
+<table border="1" width="100%">
+<tr>
+	<td>Department  </td>
+	 <td><input type="text" id="txtDepartment" maxlength="20"></td>
+	
+</tr>
+<tr>
+	
+	<td colspan=2> <input type="submit" value="Submit" onclick="DepartmentInsert(this);"></td>
+</tr>
+</table>
+
+</body>
+</html>

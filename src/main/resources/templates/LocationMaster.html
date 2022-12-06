@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Location Insert</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script>
+
+function LocationInsert(obj)
+{  	
+
+var _Location = document.getElementById("txtLocation").value;
+
+if(_Location == "")
+	{
+		alert("Location Cannot be left blank");
+		document.getElementById("txtLocation").focus();
+		return false;
+	}
+
+var postData= {    
+			"Location" : _location
+			}
+
+
+
+
+ $.ajax({
+	url: "http://localhost:9082/LocationController1/PostInsertLocationData",
+		type: "POST",
+		contentType : 'application/json; charset=utf-8',
+	dataType : 'json',
+		data: JSON.stringify(postData),
+    success: function(resultB) {        	
+		alert("Location Inserted Sucessfully");
+		return false;
+    	
+    },
+    error: function(jqXHR, textStatus, errorThrown){
+    	alert(errorThrown);
+        alert(jqXHR.status + ' ' + jqXHR.responseText);
+    }
+});
+
+}
+</script>
+
+
+
+<style>
+.container {
+  height: 200px;
+  position: relative;
+  border: 3px solid green;
+}
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+</style>
+
+</head>
+<body onload="loadDropDown(this)">
+<table border="1" width="100%">
+<tr>
+
+<tr>
+	<td>Location </td>
+	 <td><input type="text" id="txtLocation" maxlength="20"></td>
+</tr>
+
+<tr>
+	
+	<td colspan=2> <input type="submit" value="Submit" onclick="LocationInsert(this);"></td>
+</tr>
+</table>
+
+</body>
+</html>

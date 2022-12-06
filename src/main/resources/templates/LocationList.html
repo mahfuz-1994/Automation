@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Location </title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://editor.datatables.net/extensions/Editor/js/dataTables.editor.min.js"></script>
+<script src="js/Location.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://editor.datatables.net/extensions/Editor/css/editor.dataTables.min.css">
+
+<style>
+a.editor-create {
+        display: inline-block;
+        margin-bottom: 0.5em;
+    }
+</style>
+</head>
+
+
+<body onload="InvokeLocatopn(this)";>
+        <br>
+        <a class="editor-create">+ Create new record</a>
+		<table id="LocationGridData_dt" class="display" width="100%">
+		<thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Created Date</th>                     
+                        <th>Created By</th>
+                        <th>Updated Date</th>   
+                        <th>Updated By</th>
+                        <th>Active</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                        
+                    </tr>
+                </thead>
+		</table>
+</body>
+</html>

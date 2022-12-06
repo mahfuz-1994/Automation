@@ -1,0 +1,88 @@
+<!-- Code from d3-graph-gallery.com -->
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Dashboard</title>
+<head>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<script type="text/javascript" src="js/d3.min.js"></script>
+<script type="text/javascript" src="js/d3pie.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="js/MasterData.js"></script>
+
+<style>                
+        body {
+            text-align: center;
+        }
+    </style>
+</head>
+<form th:action="@{/Dashboard}" method="post">
+        <!--  <input type="submit" class="btn btn-info" value="Logout" />-->
+    </form>
+<body onload="InvokeMethod(this)"; >
+<div class="container-fluid" style="background: #fff;  padding: 15px;   border-radius: 10px;  box-shadow: 2px 3px 4px #d1d1d1;">
+<table width="100%" height="100%" border="1">
+<tr>
+	<td colspan="8">
+		<img src"img/login.png">
+	</td>
+</tr>
+<tr>
+	<td>Location</td>
+	<td><select id="idLocation" name="idLocation" required onchange=DashboardCreation(this);>
+                  <option disabled>Select Location</option>
+               </select>
+    </td>
+	<td>Department</td>
+	<td><select id="idDepartmant" name="idDepartmant" required onchange=DashboardCreation(this);>
+                  <option disabled>Select Department</option>
+               </select>
+    </td>
+    <td>Bot Name</td>
+	<td><select id="idBotName" name="idBotName" required onchange=DashboardCreation(this);>
+                  <option disabled>Select BotName</option>
+               </select>
+    </td>
+    <td>Date</td>
+	<td> <input type="datetime-local" id="Test_DatetimeLocal">
+    </td>
+</tr>
+
+<tr>
+	<td colspan="4"><div id="pieChart11"></div> </td>
+	<td colspan="4"><div id="pieChart1"></div> </td>
+	</tr>
+	<tr>
+	<td>Search : </td>
+	<td><input  type="text" id="txtSearch" maxlength="50" autocomplete="on" tooltip="Search By BotName or Location "></td>
+	<td><input type="button" value="Search" id="btnSearch" onclick="funcSearch(this);"></td>
+	
+	<td colspan="5"></td>
+	</tr>
+	<tr>
+	<td colspan="8" >
+		<table  id="GridData_dt" class="table table-hover table-sm" width="100%">
+		<thead class="thead-dark">
+							<tr>
+								<th>Process Id</th>
+								<th>BotName</th>
+								<th>Location Name</th>
+								<th>Department Name</th>
+								<th>Process Name</th>
+								<th>Status</th>
+								<th>Remarks</th>
+								<th>CreatedBy</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+	</td>
+	</tr>
+</table>
+</div>
+
+</body>
+</html>
+
